@@ -64,7 +64,7 @@ Manager.prototype.getSchemaVersion = function (){
 				if(result.length == 0){
 					return 0;
 				}else{
-					return result[0].version;
+					return parseInt(result[0].version);
 				}
 			});
 		}else{
