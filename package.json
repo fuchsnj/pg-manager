@@ -1,6 +1,6 @@
 {
   "name": "pg-manager",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Postgres schema manager",
   "main": "index.js",
   "scripts": {
