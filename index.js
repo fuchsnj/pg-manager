@@ -21,9 +21,6 @@ Manager.prototype.dropDatabase = function () {
 	return self.disconnectUsers()
 	.then(function () {
 		return self.management_db.query("DROP DATABASE if exists " + self.config.database);
-	})
-	.then(function(val){
-		//success
 	});
 };
 
@@ -43,9 +40,6 @@ Manager.prototype.disconnectUsers = function () {
   		"AND pid <> pg_backend_pid();"
 	return self.management_db.query(query, {
 		db_name: self.config.database
-	})
-	.then(function () {
-		//success
 	});
 };
 
@@ -145,12 +139,10 @@ Manager.prototype.readFile = function (file) {
 
 Manager.prototype.runMigration = function(file, version){
 	var self = this;
-	console.log("running migration: ", version, "file=", file);
 	return self.readFile(file)
 	.then(function (data) {
 		var query = data.toString();
 		return self.db.tx(function (tx) {
-			console.log("query:", query);
 			var queries = [];
 			queries.push(tx.any(query));
 			queries.push(tx.any("insert into schema_changes (version) VALUES (" + version + ")"),{
@@ -158,12 +150,8 @@ Manager.prototype.runMigration = function(file, version){
 			});
 			return Promise.all(queries)
 			.then(function () {
-				console.log("query done");
 			});
 		});
-	})
-	.then(function () {
-		console.log("1 migration done");
 	});
 };
 
@@ -172,15 +160,12 @@ Manager.prototype.updateSchema = function () {
 	
 	return self.getSchemaVersion()
 	.then(function (currentVersion) {
-		console.log("current version: ", currentVersion);
 		return self.getSqlList()
 		.then(function (sqlList) {
-			console.log("sqlList: ", sqlList);
 			return self.ensureSchemaChangesTableExists()
 			.then(function () {
 				var queue = Promise.resolve();
 				for(;currentVersion < sqlList.length; currentVersion++){
-					console.log("looping ", currentVersion);
 					queue = queue.then(function (version) {
 						return function(){
 							return self.runMigration(sqlList[version], version);
