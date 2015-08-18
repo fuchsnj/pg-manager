@@ -1,0 +1,16 @@
+{
+  "name": "pg-manager",
+  "version": "0.0.1",
+  "description": "Postgres schema manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nathan Fuchs",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "glob": "^5.0.14",
+    "pg-promise": "^1.8.5"
+  }
+}
