@@ -2,11 +2,23 @@
   "name": "pg-manager",
   "version": "0.0.4",
   "description": "Postgres schema manager",
+  "homepage": "https://github.com/fuchsnj/pg-manager",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuchsnj/pg-manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fuchsnj/pg-manager/issues",
+    "email": "fuchsnj@gmail.com"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Nathan Fuchs",
+  "author": {
+    "name": "Nathan Fuchs",
+    "email": "fuchsnj@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.9.34",
