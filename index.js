@@ -5,7 +5,13 @@ var path = require('path');
 var fs = require('fs');
 
 function Manager(db_config){
-	this.db = pg(db_config);
+	this.db = pg({
+		host: db_config.host,
+		port: db_config.port,
+		database: db_config.database,
+		user: db_config.username,
+		password: db_config.password
+	});
 	this.config = db_config;
 
 	this.management_db = pg({
