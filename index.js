@@ -12,7 +12,7 @@ function Manager(db_config){
 		host: db_config.host,
 		port: db_config.port,
 		database: 'postgres',
-		user: db_config.user,
+		user: db_config.username,
 		password: db_config.password
 	});
 }
