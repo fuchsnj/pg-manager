@@ -5,7 +5,6 @@ var path = require('path');
 var fs = require('fs');
 
 function Manager(db_config){
-	console.log("config: ", db_config);
 	this.config = {
 		host: db_config.host,
 		port: db_config.port,
